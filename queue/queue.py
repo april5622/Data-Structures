@@ -88,17 +88,17 @@ class Queue:
         self.storage = LinkedList()
     
     def __len__(self):
-        return len(self.storage)
+        return self.size
 
-    # def enqueue(self, value):
-    #     self.storage.insert(0, value) 
-    #     self.size +=1
+    def enqueue(self, value):
+        self.size +=1                 # Line up, adding from back and first is out
+        self.storage.add_to_tail(value) # FIRST IN first out
 
-    # def dequeue(self):
-    #     if self.size > 0:
-    #         popped = self.storage.pop()
-    #         self.size -= 1 
-    #         return popped
+    def dequeue(self):
+        if self.size > 0:
+            popped = self.storage.remove_head() # first in FIRST OUT
+            self.size -= 1 
+            return popped
 
 
 # class Queue:

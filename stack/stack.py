@@ -39,17 +39,40 @@ class LinkedList:
             self.tail = new_node
 
     def remove_head(self):
+        # List is empty, do nothing
         if not self.head:
-            return None
+            return None 
+        # if head is tail, set head and tail to nothing
         if self.head.next_node is None:
             head_value = self.head.value
             self.head = None
             self.tail = None
             return head_value
-     
+        # otherwise we have more elements in the list
         head_value = self.head.value
-        self.head = self.head.next_node
+        self.head = self.head.next_node # this make previous head to point to next_head to make it the new head
         return head_value 
+
+    def remove_tail(self):
+        # List is empty, do nothing
+        if not self.head:
+            return None
+        # if head is tail, set head and tail to nothing
+        if self.head is self.tail:
+            tail_value = self.head.value
+            self.head = None
+            self.tail = None
+            return tail_value
+
+        # if the node after head is not the tail, go to the next node of the current node
+        current_node = self.head
+        while current_node.next_node is not self.tail:
+            current_node = current_node.next_node
+
+        # the tail is the current node, return the value
+        tail_value = self.tail.value
+        self.tail = current_node
+        return tail_value
 
     def contains(self, value):
         if self.head is None:
@@ -84,24 +107,18 @@ class Stack:
         self.storage = LinkedList()
 
     def __len__(self):
-        return len(self.storage)
+        return self.size
 
     def push(self, value):
-        if self.storage.head == None:
-            self.storage.head = Node(value)
-        else:
-            new_node = Node(value)
-            new_node.next_node = self.storage.head
-            self.storage.head = new_node
+        self.size += 1
+        self.storage.add_to_tail(value) # LAST IN last out
 
     def pop(self):
-        if self.storage == None:
-          return None
-        else:
-            popped = self.storage.head.pop()
-            self.storage.head = self.storage.head.next_node
-            popped.next_node = None
-            return popped.value
+        if self.__len__():
+            popped = self.storage.remove_tail() # Last in LAST OUT
+            self.size -= 1
+            return popped
+
           
 
 
