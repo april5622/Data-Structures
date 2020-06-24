@@ -62,17 +62,31 @@ Answer the following questions for each of the data structures you implemented a
 
 4. What is the runtime complexity of `DoublyLinkedList.add_to_head`?
 
+0(1)
+
 5. What is the runtime complexity of `DoublyLinkedList.remove_from_head`?
+
+0(1)
 
 6. What is the runtime complexity of `DoublyLinkedList.add_to_tail`?
 
+0(1)
+
 7. What is the runtime complexity of `DoublyLinkedList.remove_from_tail`?
+
+0(1)
 
 8. What is the runtime complexity of `DoublyLinkedList.move_to_front`?
 
+0(1)
+
 9. What is the runtime complexity of `DoublyLinkedList.move_to_end`?
 
+0(1)
+
 10. What is the runtime complexity of `DoublyLinkedList.delete`?
+
+0(1)
 
     a. Compare the runtime of the doubly linked list's `delete` method with the worst-case runtime of the JS `Array.splice` method. Which method generally performs better?
 
@@ -80,11 +94,19 @@ Answer the following questions for each of the data structures you implemented a
 
 1. What is the runtime complexity of `insert`? 
 
+O(log(n))
+
 2. What is the runtime complexity of `contains`?
+
+O(log(n))
 
 3. What is the runtime complexity of `get_max`? 
 
+O(log(n))
+
 4. What is the runtime complexity of `for_each`?
+
+O(log(n))
     
 ## Heap
 
