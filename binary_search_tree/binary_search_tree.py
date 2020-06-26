@@ -93,44 +93,72 @@ class BSTNode:
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node): # very similiar to for_each function
         # print left then node then right
-        if self.left: # lowest value in the left first then root and then greatest value in the right
-            self.left.for_each(node)
-        node(self.value)
+        # lowest value in the left first then root and then greatest value in the right
+        if self.left:
+            self.left.in_order_print(self)
+        print(self.value)
         if self.right:
-            self.right.for_each(node)
+            self.right.in_order_print(self)
         
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        # create a queue for nodes                  
+        # create a queue for nodes
+        queue = []                 
         # add the first node to the queue
+        queue.append(self) 
         # while queue is not empty
             # remove the first node from the queue
             # print the remove node (Parent nodes are printed before children since its going in a wave)
             # add all children into the queue
-        pass
+        while len(queue) > 0:
+            current_node = queue.pop(0)
+            print(current_node.value)
+            if current_node.left:
+                queue.append(current_node.left)
+            
+            if current_node.right:
+                queue.append(current_node.right)
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node): # this is like for_each function of printing
         # create a stack for nodes
-        # add th first node to the stack
+        stack = []
+        # add the first node to the stack
+        stack.append(self)
         # while stack is not empty
             # get current node from the top of stack
             # print node remove from stack from top to bottom
-            # add all the children to that stack (left children first then go back up to right subroot and its children)
+            # add all the children to that stack 
             # keep in mind, the order you add the children will matter. greatest to smallest
-        
-        pass
+        while len(stack) > 0:
+            current_node = stack.pop(len(stack)-1)
+            print(current_node.value)
+            if current_node.right:
+                stack.append(current_node.right)
+            if current_node.left:
+                stack.append(current_node.left) 
+       
 
     # Stretch Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
-        pass
+        print(self.value)
+        if self.left:
+            self.left.pre_order_dft(self) 
+        if self.right:
+            self.right.pre_order_dft(self)
+        
 
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
-        pass
+        if self.left:
+            self.left.post_order_dft(self)
+        if self.right:
+            self.right.post_order_dft(self)
+        print(self.value)
