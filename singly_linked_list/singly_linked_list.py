@@ -1,3 +1,5 @@
+# a node is linked to another node which makes a list
+# a node needs to know the value and what is next
 class Node:
     def __init__(self, value=None, next_node=None):
         self.value = value
@@ -69,4 +71,4 @@ class LinkedList:
 
 
         
-                 
+               
